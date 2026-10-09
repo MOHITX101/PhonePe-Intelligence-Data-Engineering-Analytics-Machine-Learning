@@ -1,0 +1,29 @@
+# Original source repository and data
+source_data/
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Generated outputs
+outputs/
+logs/
+*.log
+
+# Testing and notebooks
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+
+artifacts/
