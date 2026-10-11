@@ -1,0 +1,139 @@
+version: 2
+
+models:
+  - name: mart_ml_state_scoring_features
+    description: >
+      Latest-quarter, state-level feature table used to produce
+      one-quarter-ahead PhonePe transaction forecasts. Feature
+      definitions match the historical ML training feature mart.
+
+    columns:
+      - name: state_slug
+        description: State or union-territory identifier.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: feature_period
+        description: Latest observed quarter used for prediction.
+        data_tests:
+          - not_null
+
+      - name: feature_period_start_date
+        data_tests:
+          - not_null
+
+      - name: target_period
+        description: Quarter being forecast.
+        data_tests:
+          - not_null
+
+      - name: target_period_start_date
+        data_tests:
+          - not_null
+
+      - name: time_index
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: quarter_sin
+        data_tests:
+          - not_null
+
+      - name: quarter_cos
+        data_tests:
+          - not_null
+
+      - name: total_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: transaction_yoy_growth_pct
+        data_tests:
+          - not_null
+
+      - name: transactions_per_registered_user
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: transactions_per_registered_merchant
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: transaction_rank
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_rank
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_1_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_2_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_3_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_4_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: rolling_4q_transaction_mean
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: rolling_4q_transaction_stddev
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: transaction_qoq_growth_pct
+        data_tests:
+          - not_null
+
+      - name: registered_user_qoq_growth_pct
+        data_tests:
+          - not_null
+
+      - name: registered_merchant_qoq_growth_pct
+        data_tests:
+          - not_null
