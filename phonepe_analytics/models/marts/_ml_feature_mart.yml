@@ -1,0 +1,113 @@
+version: 2
+
+models:
+  - name: mart_ml_state_features
+    description: >
+      Leakage-safe state-quarter feature table for predicting the
+      next quarter's PhonePe transaction count.
+
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - state_slug
+              - feature_period
+
+    columns:
+      - name: state_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: feature_period
+        data_tests:
+          - not_null
+
+      - name: feature_period_start_date
+        data_tests:
+          - not_null
+
+      - name: time_index
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: total_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_1_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_2_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_3_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: lag_4_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: rolling_4q_transaction_mean
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: rolling_4q_transaction_stddev
+        data_tests:
+          - not_null
+
+      - name: transaction_qoq_growth_pct
+        data_tests:
+          - not_null
+
+      - name: registered_user_qoq_growth_pct
+        data_tests:
+          - not_null
+
+      - name: registered_merchant_qoq_growth_pct
+        data_tests:
+          - not_null
+
+      - name: target_period
+        data_tests:
+          - not_null
+
+      - name: target_period_start_date
+        data_tests:
+          - not_null
+
+      - name: target_next_quarter_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
