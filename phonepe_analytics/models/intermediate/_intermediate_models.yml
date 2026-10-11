@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: int_geography_quarterly_metrics
+    description: >
+      One record per India/state and quarter, combining transaction,
+      registered-user and registered-merchant metrics.
+
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - file_scope
+              - geography_slug
+              - year
+              - quarter
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period
+        data_tests:
+          - not_null
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: total_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+          - positive_value

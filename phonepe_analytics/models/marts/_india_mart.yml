@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: mart_india_quarterly_kpis
+    description: >
+      India-wide quarterly KPI mart with growth, intensity and
+      baseline-index metrics.
+
+    columns:
+      - name: geography_slug
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["india"]
+
+      - name: period
+        data_tests:
+          - not_null
+          - unique
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+          - unique
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: total_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: transaction_index
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_user_index
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_merchant_index
+        data_tests:
+          - not_null
+          - positive_value

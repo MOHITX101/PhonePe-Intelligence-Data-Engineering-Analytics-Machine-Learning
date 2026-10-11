@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: mart_district_quarterly_performance
+    description: >
+      District-quarter analytical mart containing transaction count,
+      transaction value, adoption, growth and ranking metrics.
+
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - state_slug
+              - district_slug
+              - year
+              - quarter
+
+      - metric_flag_consistency:
+          arguments:
+            flag_column: has_transaction_data
+            metric_columns:
+              - total_transaction_count
+              - total_transaction_amount
+
+      - metric_flag_consistency:
+          arguments:
+            flag_column: has_user_data
+            metric_columns:
+              - registered_user_count
+
+      - metric_flag_consistency:
+          arguments:
+            flag_column: has_merchant_data
+            metric_columns:
+              - registered_merchant_count
+
+    columns:
+      - name: state_slug
+        data_tests:
+          - not_null
+
+      - name: district_slug
+        data_tests:
+          - not_null
+
+      - name: district_name
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period
+        data_tests:
+          - not_null
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: total_transaction_count
+        data_tests:
+          - positive_value
+
+      - name: total_transaction_amount
+        data_tests:
+          - positive_value
+
+      - name: average_transaction_value
+        data_tests:
+          - positive_value
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: registered_merchant_count
+        data_tests:
+          - positive_value
+
+      - name: state_transaction_count_rank
+        data_tests:
+          - positive_value
+
+      - name: state_transaction_amount_rank
+        data_tests:
+          - positive_value
+
+      - name: national_transaction_count_rank
+        data_tests:
+          - positive_value
+
+      - name: national_transaction_amount_rank
+        data_tests:
+          - positive_value
