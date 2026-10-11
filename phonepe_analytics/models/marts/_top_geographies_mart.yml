@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: mart_top_geographies
+    description: >
+      Unified long-format rankings for transaction, user and merchant
+      metrics across state, district and pincode geographies.
+
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - metric_domain
+              - file_scope
+              - geography_level
+              - parent_state_slug
+              - geography_slug
+              - year
+              - quarter
+              - rank_position
+
+    columns:
+      - name: metric_domain
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["transaction", "user", "merchant"]
+
+      - name: metric_name
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values:
+                  - "transaction_count"
+                  - "registered_user_count"
+                  - "registered_merchant_count"
+
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district", "pincode"]
+
+      - name: entity_name
+        data_tests:
+          - not_null
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: rank_position
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period
+        data_tests:
+          - not_null
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: metric_value
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: source_path
+        data_tests:
+          - not_null

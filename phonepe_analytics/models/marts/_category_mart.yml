@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: mart_transaction_category_trends
+    description: >
+      Quarterly transaction-category performance by India and state,
+      including category share, growth and ranking metrics.
+
+    data_tests:
+      - unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - file_scope
+              - geography_slug
+              - year
+              - quarter
+              - transaction_category
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period
+        data_tests:
+          - not_null
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: transaction_category
+        data_tests:
+          - not_null
+
+      - name: category_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: geography_total_transaction_count
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: category_share_pct
+        data_tests:
+          - not_null
+          - value_between:
+              arguments:
+                minimum_value: 0
+                maximum_value: 100
+
+      - name: category_rank
+        data_tests:
+          - not_null
+          - positive_value
