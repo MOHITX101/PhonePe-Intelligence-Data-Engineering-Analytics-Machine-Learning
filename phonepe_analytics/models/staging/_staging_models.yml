@@ -1,0 +1,137 @@
+version: 2
+
+models:
+  - name: stg_aggregated_transactions
+    description: >
+      Standardized quarterly PhonePe transaction metrics sourced from
+      the validated Silver aggregated-transactions table.
+
+    columns:
+      - name: file_scope
+        description: "Whether the record represents India or a state."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_slug
+        description: "Standardized geographic identifier."
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period
+        data_tests:
+          - not_null
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: transaction_category
+        data_tests:
+          - not_null
+
+      - name: payment_instrument_type
+        data_tests:
+          - not_null
+
+      - name: transaction_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_aggregated_users
+    description: "Standardized quarterly registered-user metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_aggregated_merchants
+    description: "Standardized quarterly registered-merchant metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null

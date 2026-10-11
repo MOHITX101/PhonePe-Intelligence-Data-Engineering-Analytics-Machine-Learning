@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: silver
+    description: "Validated PhonePe Pulse Silver Delta tables."
+    catalog: workspace
+    schema: silver
+
+    tables:
+      - name: phonepe_file_metadata
+        description: "File-level lineage and source metadata."
+
+      - name: aggregated_transactions
+        description: "Quarterly aggregated transaction metrics."
+
+      - name: aggregated_users
+        description: "Quarterly aggregated registered-user metrics."
+
+      - name: aggregated_merchants
+        description: "Quarterly aggregated registered-merchant metrics."
+
+      - name: map_transactions
+        description: "District-level geographic transaction metrics."
+
+      - name: map_users
+        description: "District-level geographic registered-user metrics."
+
+      - name: map_merchants
+        description: "Geographic registered-merchant metrics."
+
+      - name: top_transactions
+        description: "Ranked transaction locations by state, district and pincode."
+
+      - name: top_users
+        description: "Ranked registered-user locations."
+
+      - name: top_merchants
+        description: "Ranked registered-merchant locations."

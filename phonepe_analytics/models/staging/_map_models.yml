@@ -1,0 +1,146 @@
+version: 2
+
+models:
+  - name: stg_map_transactions
+    description: "Standardized geographic transaction metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: transaction_count
+        data_tests:
+          - not_null
+
+      - name: transaction_amount
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_map_users
+    description: "Standardized geographic registered-user metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_map_merchants
+    description: "Standardized geographic registered-merchant metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null

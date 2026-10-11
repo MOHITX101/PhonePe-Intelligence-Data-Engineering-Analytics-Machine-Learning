@@ -1,0 +1,157 @@
+version: 2
+
+models:
+  - name: stg_top_transactions
+    description: "Standardized ranked transaction geography metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district", "pincode"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: rank_position
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: transaction_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_top_users
+    description: "Standardized ranked registered-user geography metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district", "pincode"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: rank_position
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_user_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
+
+
+  - name: stg_top_merchants
+    description: "Standardized ranked registered-merchant geography metrics."
+
+    columns:
+      - name: file_scope
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["country", "state"]
+
+      - name: geography_level
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["state", "district", "pincode"]
+
+      - name: geography_slug
+        data_tests:
+          - not_null
+
+      - name: rank_position
+        data_tests:
+          - not_null
+          - positive_value
+
+      - name: year
+        data_tests:
+          - not_null
+
+      - name: quarter
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+                quote: false
+
+      - name: period_start_date
+        data_tests:
+          - not_null
+
+      - name: registered_merchant_count
+        data_tests:
+          - not_null
+
+      - name: source_path
+        data_tests:
+          - not_null
