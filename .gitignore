@@ -27,3 +27,30 @@ Thumbs.db
 
 
 artifacts/
+
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Databricks and Streamlit secrets
+**/.streamlit/secrets.toml
+
+# Local cloud credentials
+config/local/
+*_accessKeys.csv
+*.pem
+
+# Local editor configuration
+.vscode/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Accidental duplicate Streamlit folder
+streamlit_app/streamlit_app/
+
+# Power BI binary exports
+*.pbix
