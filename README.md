@@ -223,6 +223,13 @@ dbt docs serve --port 8080
 
 Open `http://localhost:8080`. The token prompt is hidden. Do not commit the token, local profiles containing credentials, or unreviewed notebook outputs. `dbt build` rebuilds selected resources and can consume warehouse quota; documentation generation is not a substitute for it.
 
+
+## Live Dashboard
+
+[Open the interactive PhonePe dashboard](https://phonepe-intelligence-data-engineering-analytics-machine-learni.streamlit.app/)
+
+Explore transaction trends, geographic comparisons and next-quarter forecasts.
+
 ### Refresh order
 
 1. Select and record the new source commit; profile the snapshot.
