@@ -3,3 +3,9 @@ target/
 dbt_packages/
 logs/
 .env
+
+# Credentials and secrets
+*_accessKeys.csv
+*.pem
+.env
+.streamlit/secrets.toml
